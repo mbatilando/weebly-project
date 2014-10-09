@@ -1,0 +1,55 @@
+.login-partial {
+	height: 100%;
+	width: 100%;
+	background-color: #005690;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+
+	.login-container {
+		#customBtn {
+			display: block;
+			margin: 0 auto;
+			width: 240px;
+			background: #dd4b39;
+			color: white;
+			border-radius: 5px;
+			white-space: nowrap;
+			cursor: pointer;
+		}
+		#customBtn:hover {
+			background: #e74b37;
+			cursor: hand;
+		}
+		span.label {
+			font-weight: bold;
+		}
+		span.icon {
+			display: inline-block;
+			vertical-align: middle;
+			width: 40px;
+			height: 40px;
+			border-right: #bb3f30 1px solid;
+
+			.fa {
+				position: relative;
+				font-size: 28px;
+				left: 9px;
+				top: 8px;
+			}
+		}
+		span.buttonText {
+			vertical-align: middle;
+			font-size: 18px;
+			font-family: 'Roboto',arial,sans-serif;
+			position: relative;
+			left: 18px;
+		}
+	}
+}
+

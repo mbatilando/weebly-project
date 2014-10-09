@@ -1,0 +1,87 @@
+.page-partial {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+
+	.header {
+		background-color: #518dca;
+		width: 100%;
+
+		i.brand {
+			display: inline-block;
+			height: 40px;
+			width: 40px;
+			background-image: url('../assets/images/logo.png');
+			position: relative;
+			left: 30px;
+		}
+	}
+
+	.content {
+		flex: 1;
+		display: flex;
+		flex-flow: row;
+
+		.sidebar {
+			background: #2c3e50;
+			width: 250px;
+			min-width: 250px;
+
+			.section .content.pages {
+				padding: 23px 31px;
+			}
+
+			.section header {
+				color: #9cb3ca;
+				text-align: center;
+				font-size: 13px;
+				font-family: 'ProximaNova-Sbold';
+				padding: 8px;
+				background-color: #4f657b;
+				border-top: 2px solid #16232E;
+				border-bottom: 2px solid #16232E;
+			}
+		}
+
+		.main {
+			flex: 1 0 500px;
+			background: blue;
+		}
+	}
+
+	.content.elements {
+		flex-flow: row;
+
+		.sp {
+			display: block;
+			margin: 0 auto;
+		}
+
+		.row {
+			flex: 1;
+			display: flex;
+			flex-flow: column;
+		}
+
+		.element {
+			flex: 1;
+			border: 1px solid #1a2733;
+			text-align: center;
+			padding: 11px;
+			font-family: 'ProximaNova-Sbold';
+			color: #5e768e;
+			cursor: pointer;
+			transition: background-color 0.5s ease;
+
+			&:hover {
+				background-color: #3c5165;
+			}
+		}
+
+		.title {
+			margin: 5px;
+			display: inline-block;
+		}
+	}
+}
