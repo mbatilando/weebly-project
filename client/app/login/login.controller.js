@@ -1,11 +1,21 @@
 'use strict';
 
 angular.module('weeblyProjectApp')
-  .controller('LoginCtrl', function ($scope) {
+  .controller('LoginCtrl', function ($scope, loginService, $location, $cookies) {
   	console.log('In LoginCtrl');
+
+    if ($cookies.user && $cookies.api_key) {
+        loginService.cookieLogin();
+        $location.path('/page');
+        return;
+    }
+
+
     $scope.signInCallback = function (authResult) {
-    	debugger
-    	console.log(authResult);
+        loginService.login(authResult).then(function () {
+            debugger
+            $location.path('/page');
+        });
     }
 
     // Render the sign in button.

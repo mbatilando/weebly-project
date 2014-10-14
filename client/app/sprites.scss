@@ -20,3 +20,21 @@
 .sp-nav {
 	background: url("../assets/images/elements-icon.png") 63px -8px;
 }
+
+.aed {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+}
+
+.aed-add {
+	background: url("../assets/images/add-edit-del-sprites.png") -11px -50px;
+}
+
+.aed-edit {
+	background: url("../assets/images/add-edit-del-sprites.png") -31px -50px;
+}
+
+.aed-delete {
+	background: url("../assets/images/add-edit-del-sprites.png") -52px -50px;
+}

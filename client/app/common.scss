@@ -1,4 +1,12 @@
 html, body, .root {
 	height: 100%;
 	width: 100%;
+	min-width: 800px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }

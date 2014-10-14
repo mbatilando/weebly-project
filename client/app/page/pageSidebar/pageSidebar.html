@@ -1,0 +1,79 @@
+<div class="section">
+	<header>TEMPLATES</header>
+	<div class="s-content pages">
+		<ul>
+			<!-- <li class="page-box selected">
+				<span>PAGE</span>
+				<i class="aed aed-edit"></i>
+				<i class="aed aed-delete"></i>
+			</li>
+			<li class="page-box remove">
+				<span>PAGE</span>
+				<i class="aed aed-delete"></i>
+			</li>
+			<li class="page-box">
+				<span>PAGE</span>
+				<i class="aed aed-edit"></i>
+				<i class="aed aed-delete"></i>
+			</li> -->
+			<li ng-repeat="page in pageService.allPages"
+				ng-class="{remove : page.remove}"
+				ng-mouseenter="page.hover = true"
+				ng-mouseleave="page.hover = false"
+				class="page-box">
+				<input  ng-model="page.name"
+						ng-blur="pageService.updatePage(page)"
+						class="name"
+						type="text"
+						value="{{page.name}}">
+				<i ng-class="{ hidden: !page.hover }"
+				   ng-click="focusPage(page, $event)"
+				   class="aed aed-edit"></i>
+				<i ng-class="{ hidden: !page.hover }"
+				   ng-click="deletePage(page)"
+				   ng-mouseenter="page.remove = true"
+				   ng-mouseleave="page.remove = false"
+				   class="aed aed-delete"></i>
+			</li>
+		</ul>
+		<div class="page-box add-page">
+			<input type="text" placeholder="ADD NEW PAGE" ng-model="newPageName">
+			<i class="aed aed-add" ng-click="addPage()"></i>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<header>ELEMENTS</header>
+	<div class="s-content elements">
+		<div class="row">
+			<div class="element">
+				<i class="sp sp-title"></i>
+				<span class="title">TITLE</span>
+			</div>
+			<div class="element">
+				<i class="sp sp-image"></i>
+				<span class="title">IMAGE</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="element">
+				<i class="sp sp-text"></i>
+				<span class="title">TEXT</span>
+			</div>
+			<div class="element">
+				<i class="sp sp-nav"></i>
+				<span class="title">NAV</span>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<header>SETTINGS</header>
+	<ul class="s-content settings">
+		<li>
+			<div class="container">
+				<span class="setting-name">SITE GRID</span>
+			</div>
+		</li>
+	</ul>
+</div>
