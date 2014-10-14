@@ -2,7 +2,7 @@
 
 angular.module('weeblyProjectApp')
   .controller('LoginCtrl', function ($scope, loginService, $location, $cookies) {
-  	console.log('In LoginCtrl');
+  	// console.log('In LoginCtrl');
 
     if ($cookies.user && $cookies.api_key) {
         loginService.cookieLogin();

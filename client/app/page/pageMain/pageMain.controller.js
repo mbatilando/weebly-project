@@ -2,6 +2,6 @@
 
 angular.module('weeblyProjectApp')
   .controller('PagemainCtrl', function ($scope, pageService) {
-    console.log('PagemainCtrl');
+    // console.log('PagemainCtrl');
     $scope.pageService = pageService;
   });

@@ -7,10 +7,8 @@ angular.module('weeblyProjectApp')
     service.apiKey = '';
 
     service.login = function (authResult) {
-      debugger
       return $http.post('/api/users', { name: authResult.client_id })
         .success(function (data) {
-          debugger
           service.user = data.user;
           service.apiKey = data.api_key;
         })
