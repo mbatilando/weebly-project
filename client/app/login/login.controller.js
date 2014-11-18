@@ -3,18 +3,11 @@
 angular.module('weeblyProjectApp')
   .controller('LoginCtrl', function ($scope, loginService, $location, $cookies) {
   	// console.log('In LoginCtrl');
-
-    if ($cookies.user && $cookies.api_key) {
-        loginService.cookieLogin();
-        $location.path('/page');
-        return;
-    }
-
+    $scope.showLogin = false;
 
     $scope.signInCallback = function (authResult) {
         loginService.login(authResult).then(function () {
-            debugger
-            $location.path('/page');
+            // $location.path('/page');
         });
     }
 
@@ -31,11 +24,15 @@ angular.module('weeblyProjectApp')
         );
     }
 
-    // Start function in this example only renders the sign in button.
-    $scope.start = function() {
-        $scope.renderSignInButton();
-    };
+    var init = (function () {
+        if ($cookies.user && $cookies.api_key) {
+            loginService.cookieLogin();
+            $location.path('/page');
+            return;
+        } else {
+            $scope.showLogin = true;
+            $scope.renderSignInButton();
+        }
+    })();
 
-    // Call start function on load.
-    $scope.start();
   });
