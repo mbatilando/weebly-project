@@ -2,20 +2,6 @@
 	<header>TEMPLATES</header>
 	<div class="s-content pages">
 		<ul>
-			<!-- <li class="page-box selected">
-				<span>PAGE</span>
-				<i class="aed aed-edit"></i>
-				<i class="aed aed-delete"></i>
-			</li>
-			<li class="page-box remove">
-				<span>PAGE</span>
-				<i class="aed aed-delete"></i>
-			</li>
-			<li class="page-box">
-				<span>PAGE</span>
-				<i class="aed aed-edit"></i>
-				<i class="aed aed-delete"></i>
-			</li> -->
 			<li ng-repeat="page in pageService.allPages"
 				ng-class="{remove : page.remove}"
 				ng-mouseenter="page.hover = true"
@@ -73,6 +59,7 @@
 		<li>
 			<div class="container">
 				<span class="setting-name">SITE GRID</span>
+				<span class="button custom-slide"></span>
 			</div>
 		</li>
 	</ul>
