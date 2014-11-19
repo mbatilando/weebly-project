@@ -17,8 +17,12 @@ var UserSchema = new Schema({
 */
 UserSchema.statics.validateApiKey = function (username, apiKey, callback) {
 	this.findOne({ name: username }, function (err, user) {
-		var authenticated = user.api_key === apiKey ? true : false;
-		callback({ authenticated: authenticated, user: user });
+		if (user) {
+			var authenticated = user.api_key === apiKey ? true : false;
+			callback({ authenticated: authenticated, user: user });
+		} else {
+			callback({ authenticated: authenticated, user: null });
+		}
 	});
 };
 
