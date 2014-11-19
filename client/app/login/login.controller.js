@@ -7,7 +7,7 @@ angular.module('weeblyProjectApp')
 
     $scope.signInCallback = function (authResult) {
         loginService.login(authResult).then(function () {
-            // $location.path('/page');
+            $location.path('/page');
         });
     }
 

@@ -1,29 +1,48 @@
 'use strict';
 
-var _ = require('lodash');
-var Page = require('./page.model');
+var _ = require('lodash'),
+    Page = require('./page.model'),
+    cache = require('memory-cache');
 
 // Get list of pages
 exports.index = function(req, res) {
-  Page.find(function (err, pages) {
-    if(err) { return handleError(res, err); }
+  var pages = cache.get('pages');
+  if (pages) {
+    console.log('GET /:CACHE HIT');
     return res.json(200, pages);
-  });
+  } else {
+    console.log('GET /:CACHE MISS');
+    Page.find(function (err, pages) {
+      if(err) { return handleError(res, err); }
+      cache.put('pages', pages);
+      return res.json(200, pages);
+    });
+  }
 };
 
 // Get a single page
 exports.show = function(req, res) {
-  Page.findById(req.params.id, function (err, page) {
-    if(err) { return handleError(res, err); }
-    if(!page) { return res.send(404); }
-    return res.json(page);
-  });
+  var page = cache.get(req.params.id);
+  if (page) {
+    console.log('GET /id:CACHE HIT');
+    return res.json(200, page);
+  } else {
+    console.log('GET /id:CACHE MISS');
+    Page.findById(req.params.id, function (err, page) {
+      if(err) { return handleError(res, err); }
+      if(!page) { return res.send(404); }
+      cache.put(page._id, page);
+      return res.json(page);
+    });
+  }
 };
 
 // Creates a new page in the DB.
 exports.create = function(req, res) {
   Page.create(req.body, function(err, page) {
     if(err) { return handleError(res, err); }
+    console.log('POST: CACHING');
+    cache.put(page._id, page);
     return res.json(201, page);
   });
 };
@@ -37,6 +56,10 @@ exports.update = function(req, res) {
     var updated = _.merge(page, req.body);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
+      console.log('PUT: CACHING');
+      cache.put(page._id, page);
+      console.log('PUT: DELETING ALL PAGES CACHE')
+      cache.del('pages');
       return res.json(200, page);
     });
   });
@@ -49,6 +72,9 @@ exports.destroy = function(req, res) {
     if(!page) { return res.send(404); }
     page.remove(function(err) {
       if(err) { return handleError(res, err); }
+      console.log('DELETING CACHED OBJ AND PAGES');
+      cache.del(page._id);
+      cache.del('pages');
       return res.send(204);
     });
   });
@@ -56,4 +82,4 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.send(500, err);
-}
+};
