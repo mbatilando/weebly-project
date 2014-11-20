@@ -13,15 +13,53 @@ Must have Sass, npm, Bower, Grunt and Mongo installed
 4. 'mongod' in root project directory
 5. 'grunt serve' in root project directory
 
-Frontend Levels 1-2
-I used SCSS for my CSS, and CommonJS to modularize my backend code.
-I used Angular to manage my front-end events and modularize my components, views and server interaction.
+Front-end Level One: Project Setup & Structure
+------
+#h3 (DONE) Set up the basic DOM structure to match the mockups provided
+#h3 (DONE) Set up your Javascript and CSS
+#h3 (DONE Optional) Use a dependency management tool for your Javascript (RequireJS, Browserify, etc.)
+I used Common.js on the server-side and Angular on the client-side to divide my application into modules.
+#h3 (DONE Optional) Use a CSS pre-processor for your CSS (LESS, SASS)
+I used SCSS to organize my client-side CSS.
 
-Backend Levels 1-2 (some of 3)
+
+Front-end Level Two: Basic Design & Interaction
+------
+#h3 (DONE) Design implementation should be 60% complete
+#h3 (DONE) Users can create, delete, and rename pages
+#h3 (DONE Optional) Use or create a reusable framework to manage events and interactions
+I used Angular to manage my front-end events, modularize my components, views and server interaction.
+This application is using client-side rendering.
+
+Backend Level One: Basic Design & Interaction
+------
+#h3 (DONE) Your project should be served via a webserver, not static files.  You can use any language/webserver you want
+
+#h3 (DONE) Basic backend persistence should be set up.  Pages, elements, position, and content should persist.  The persistence layer you use is entirely up to you
+
+#h3 (DONE Optional) Make use of a "Data Access Layer" to talk to your datastore.  This can be a full-fledged ORM, or a custom piece of code
 I have a client-side rendering app which has Mongo, Node, and Express on the backend.
 I use Mongoose as an ORM.
 
 I store the user and the API key in cookies, this isn't secure however I felt that it was fine to persist state since
 this is a demo application.
 
-I have a REST api for pages but I did not implement authentication using the user's API key.
+Backend Level Two: Authentication
+------
+#h3 (DONE) Your application must be behind an authentication wall.  Users must authenticate with a Google account (via OAuth 2) before being able to access the tool (Note: There does NOT need to be actual user accounts.  All authenticated users can see the same data/pages/elements at this point)
+#h3 (DONE) The first time a user authenticates, their information should be persisted in a datastore.  In addition to their user information, they should be given a random auto-generated API Token.
+#h3 (Optional) Extend your OAuth library/implementation to allow authentication from Facebook as well as Google (Only do this if you have extra time!)
+
+Backend Level Three: REST API
+------
+#h3 (DONE) Your application must provided a "REST" API to access and manipulate page data.  The API must provide the following
+#h3 (DONE) Your API must be authenticated via the API Token that was generated in Backend Level Two
+#h3 (DONE) You can use any data format you want for your API (JSON, XML, YAML)
+#h3 (Optional) Allow users to request specific data formats back by providing an extension on their API request (/api/page/1.json, /api/page/1.xml, etc.)
+
+Backend Level Four: Caching
+------
+#h3 (DONE) Implement a caching layer for your REST API.  It can use any caching tool/library you prefer
+#h3 (DONE) Multiple requests to the same endpoint should be cached, avoiding extra hits/connections to your database/datastore
+#h3 (DONE) Whenever a page is updated, the cache for that page should be invalidated
+#h3 (Optional) Benchmark and perform performance tests on your caching implementation.  Can you show us how well it improved performance?  Use any tools you need to benchmark your caching.
