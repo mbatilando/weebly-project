@@ -12,7 +12,15 @@
 		</div>
 	</div>
 	<h1 class="title">Add Title Here</h1>
-	<p>
-		{{pageService.currPage.content}}
-	</p>
+	<div class="text">
+		<textarea ng-class="{deleting: deleteHover}"
+				  ng-blur="updatePage(pageService.currPage)"
+				  ng-model="pageService.currPage.content">
+			{{pageService.currPage.content}}
+		</textarea>
+		<span class="delete"
+			  ng-mouseover="deleteHover = true"
+			  ng-mouseleave="deleteHover = false">
+		</span>
+	</div>
 </div>

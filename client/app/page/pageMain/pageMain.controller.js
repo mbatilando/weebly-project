@@ -5,9 +5,14 @@ angular.module('weeblyProjectApp')
     // console.log('PagemainCtrl');
 
     $scope.pageService = pageService;
+    $scope.deleteHover = false;
 
     $scope.selectPage = function (pageId) {
     	pageService.selectPage(pageId);
     	$location.path('/page/'+pageId, false);
+    }
+
+    $scope.updatePage = function (page) {
+    	pageService.updatePage(page);
     }
   });
