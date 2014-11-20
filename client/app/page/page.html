@@ -1,8 +1,6 @@
 <div class="page-partial">
-	<header class="header">
-		<i class="brand"></i>
-		<span class="api-key">API Key: <strong>{{loginService.apiKey}}</strong></span>
-	</header>
+	<div ui-view="header">
+	</div>
 
 	<div class="content">
 		<div ui-view="sidebar" class="sidebar">

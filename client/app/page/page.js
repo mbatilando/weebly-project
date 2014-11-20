@@ -11,6 +11,10 @@ angular.module('weeblyProjectApp')
         		templateUrl: 'app/page/page.html',
                 controller: 'PageCtrl'
         	},
+            'header@page': {
+                templateUrl: 'components/navbar/navbar.html',
+                controller: 'PageCtrl'
+            },
         	'sidebar@page': {
         		templateUrl: 'app/page/pageSidebar/pageSidebar.html',
         		controller: 'PagesidebarCtrl'
@@ -21,22 +25,4 @@ angular.module('weeblyProjectApp')
         	}
         }
       });
-      // .state('page2', {
-      //   url: '/page/:id',
-      //   templateUrl: 'app/page/page.html',
-      //   views: {
-      //       '': {
-      //           templateUrl: 'app/page/page.html',
-      //           controller: 'PageCtrl'
-      //       },
-      //       'sidebar@page2': {
-      //           templateUrl: 'app/page/pageSidebar/pageSidebar.html',
-      //           controller: 'PagesidebarCtrl'
-      //       },
-      //       'main@page2': {
-      //           templateUrl: 'app/page/pageMain/pageMain.html',
-      //           controller: 'PagemainCtrl'
-      //       }
-      //   }
-      // });
   });

@@ -11,4 +11,6 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'page/page.scss';
 @import 'reset.scss';
 @import 'sprites.scss';
+@import 'navbar/navbar.scss';
 // endinjector
+@import '../components/navbar/navbar.scss'

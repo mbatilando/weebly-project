@@ -6,34 +6,6 @@
 	font-family: 'ProximaNova-Sbold';
 	font-size: 13px;
 
-	.header {
-		background-color: #518dca;
-		width: 100%;
-
-		i.brand {
-			display: inline-block;
-			height: 40px;
-			width: 40px;
-			background-image: url('../assets/images/logo.png');
-			position: relative;
-			left: 30px;
-		}
-
-		.api-key {
-			font-family: ProximaNova-Reg;
-			color: white;
-			font-size: 18px;
-			float: right;
-			position: relative;
-			top: 13px;
-			right: 10px;
-		}
-
-		strong {
-			font-family: ProximaNova-Sbold;
-		}
-	}
-
 	.content {
 		flex: 1;
 		display: flex;
