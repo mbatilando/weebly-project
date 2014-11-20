@@ -4,6 +4,16 @@ angular.module('weeblyProjectApp')
   .factory('pageService', function ($http) {
     var service = {};
     service.allPages = [];
+    service.currPage = {};
+
+    service.selectPage = function (pageId) {
+    	for (var i = 0, len = service.allPages.length; i < len; i++) {
+    		if (service.allPages[i]._id === pageId) {
+    			service.currPage = service.allPages[i];
+    			return service.allPages[i];
+    		}
+    	}
+    };
 
     service.getAllPages = function () {
 		return $http.get('/api/pages')

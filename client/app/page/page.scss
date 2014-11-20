@@ -65,6 +65,7 @@
 				overflow: hidden;
 				text-overflow: ellipsis;
 				opacity: 1;
+				white-space: nowrap;
 				transition: 1s linear all;
 				-webkit-transition: .3s linear all;
 
@@ -73,7 +74,7 @@
 				}
 			}
 
-			li:hover {
+			li.selected, li:hover {
 				background-color: #97aabb;
 				color: white;
 			}

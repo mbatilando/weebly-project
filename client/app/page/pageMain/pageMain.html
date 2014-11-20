@@ -1,7 +1,9 @@
 <div class="container">
 	<ul class="pages">
 		<li ng-repeat="page in pageService.allPages"
-			ng-animate="{leave: 'animate-leave'}">{{page.name}}</li>
+			ng-animate="{leave: 'animate-leave'}"
+			ng-click="selectPage(page._id)"
+			ng-class="{selected: page._id === pageService.currPage._id}">{{page.name}}</li>
 	</ul>
 	<div class="image">
 		<div class="placeholder">
