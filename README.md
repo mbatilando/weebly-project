@@ -55,11 +55,11 @@ Backend Level Three: REST API
 ###### (DONE) Your application must provided a "REST" API to access and manipulate page data.  The API must provide the following
 ###### (DONE) Your API must be authenticated via the API Token that was generated in Backend Level Two
 ###### (DONE) You can use any data format you want for your API (JSON, XML, YAML)
-###### (Optional) Allow users to request specific data formats back by providing an extension on their API request (/api/page/1.json, /api/page/1.xml, etc.)
+###### (DONE Optional) Allow users to request specific data formats back by providing an extension on their API request (/api/page/1.json, /api/page/1.xml, etc.)
 
 Backend Level Four: Caching
 ------
 ###### (DONE) Implement a caching layer for your REST API.  It can use any caching tool/library you prefer
 ###### (DONE) Multiple requests to the same endpoint should be cached, avoiding extra hits/connections to your database/datastore
 ###### (DONE) Whenever a page is updated, the cache for that page should be invalidated
-###### (Optional) Benchmark and perform performance tests on your caching implementation.  Can you show us how well it improved performance?  Use any tools you need to benchmark your caching.
+###### (DONE Optional) Benchmark and perform performance tests on your caching implementation.  Can you show us how well it improved performance?  Use any tools you need to benchmark your caching.

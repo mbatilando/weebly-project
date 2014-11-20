@@ -3,7 +3,8 @@
 var _ = require('lodash'),
     Page = require('./page.model'),
     User = require('../user/user.model'),
-    cache = require('memory-cache');
+    cache = require('memory-cache'),
+    js2xmlparser = require('js2xmlparser');
 
 // Check if username and api key match
 function authenticate (req, res, callback) {
@@ -18,6 +19,12 @@ function authenticate (req, res, callback) {
       }
     });
   }
+}
+
+function authenticateNoCache (req, res, callback) {
+  User.validateApiKey(req.cookies.user, req.cookies.api_key, function (result) {
+    result.authenticated ? callback(true) : callback(false);
+  });
 }
 
 // Get list of pages
@@ -40,6 +47,18 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of pages
+exports.nIndex = function(req, res) {
+  authenticateNoCache(req, res, function (authenticated) {
+    if (!authenticated) { return res.send(404); }
+      Page.find(function (err, pages) {
+        if(err) { return handleError(res, err); }
+        return res.json(200, pages);
+      });
+  });
+};
+
+
 // Get a single page
 exports.show = function(req, res) {
   authenticate(req, res, function (authenticated) {
@@ -47,7 +66,10 @@ exports.show = function(req, res) {
 
     var page = cache.get(req.params.id);
     if (page) {
-      // console.log('GET /id:CACHE HIT');
+      if (req.params.optional === 'xml') {
+        page = js2xmlparser('page', { '_id': page._id.toString(), 'name': page.name });
+        return res.header('Content-Type','text/xml').send(page);
+      }
       return res.json(200, page);
     } else {
       // console.log('GET /id:CACHE MISS');
@@ -55,6 +77,10 @@ exports.show = function(req, res) {
         if(err) { return handleError(res, err); }
         if(!page) { return res.send(404); }
         cache.put(page._id, page);
+        if (req.params.optional === 'xml') {
+          page = js2xmlparser('page', { '_id': page._id.toString(), 'name': page.name });
+          return res.header('Content-Type','text/xml').send(page);
+        }
         return res.json(page);
       });
     }
@@ -107,7 +133,7 @@ exports.destroy = function(req, res) {
       if(!page) { return res.send(404); }
       page.remove(function(err) {
         if(err) { return handleError(res, err); }
-        console.log('DELETING CACHED OBJ AND PAGES');
+        // console.log('DELETING CACHED OBJ AND PAGES');
         cache.del(page._id);
         cache.del('pages');
         return res.send(204);
