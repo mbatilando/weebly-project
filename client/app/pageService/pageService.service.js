@@ -39,7 +39,6 @@ angular.module('weeblyProjectApp')
     service.deletePage = function (pageId) {
 		return $http.delete('/api/pages/' + pageId)
 		    .success(function (page) {
-		      // remove page from service.allPages
 		      for (var i = 0, len = service.allPages.length; i < len; i++) {
 		      	if (service.allPages[i]._id === pageId) {
 		      		service.allPages.splice(i, 1);

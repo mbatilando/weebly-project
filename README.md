@@ -1,7 +1,5 @@
 weebly-project
 ==============
-Git Url: https://github.com/mbatilando/weebly-project
-
 Installation Instructions:
 Must have Sass, npm, Bower, Grunt and Mongo installed
 
@@ -29,6 +27,12 @@ Front-end Level Two: Basic Design & Interaction
 I used Angular to manage my front-end events, modularize my components, views and server interaction.
 I used the Angular UI Router to nest my views and make the front-end more composable.
 Since this is in Angular, this application uses client-side rendering.
+
+Front-end Level Five: Columns, Routing, and Persistence
+------
+###### Design implementation should be (close to) 100% complete
+###### If a user drags an element directly over top of an existing element, the elements should split its width in half, and the elements should appear side-by-side.
+###### (DONE) Implement client-side routing.  When a user is editing a specific page, the URL represents that.  When the page is refreshed, it should load the appropriate content for the correct page.
 
 Backend Level One: Basic Design & Interaction
 ------
