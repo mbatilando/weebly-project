@@ -7,7 +7,7 @@ angular.module('weeblyProjectApp')
 
     $scope.signInCallback = function (authResult) {
         loginService.login(authResult).then(function () {
-            $location.path('/page');
+            $location.path('/page/');
         });
     }
 
@@ -27,7 +27,7 @@ angular.module('weeblyProjectApp')
     var init = (function () {
         if ($cookies.user && $cookies.api_key) {
             loginService.cookieLogin();
-            $location.path('/page');
+            $location.path('/page/');
             return;
         } else {
             $scope.showLogin = true;

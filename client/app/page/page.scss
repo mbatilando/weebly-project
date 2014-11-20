@@ -50,6 +50,8 @@
 
 		.pages {
 			color: #97aabb;
+			-webkit-user-select: none;
+			user-select: none;
 
 			li {
 				display: inline-block;

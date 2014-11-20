@@ -1,16 +1,17 @@
 'use strict';
 
 angular.module('weeblyProjectApp')
-  .controller('PageCtrl', function ($scope, $cookies, $location, loginService, pageService) {
+  .controller('PageCtrl', function ($scope, $cookies, $location, loginService, pageService, $stateParams) {
     $scope.loginService = loginService;
     var init = (function () {
-        pageService.getAllPages();
-
         if ($cookies.user && $cookies.api_key) {
             loginService.cookieLogin();
-            $location.path('/page');
         } else {
             $location.path('/');
         }
+
+        pageService.getAllPages().then(function () {
+            if ($stateParams.id) { pageService.selectPage($stateParams.id) }
+        });
     })();
   });
