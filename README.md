@@ -28,6 +28,13 @@ I used Angular to manage my front-end events, modularize my components, views an
 I used the Angular UI Router to nest my views and make the front-end more composable.
 Since this is in Angular, this application uses client-side rendering.
 
+Front-end Level Three: Advanced Design & Interaction
+------
+###### Design implementation should be 80% complete
+###### Implement an editor in which elements are placed according to DOM order and static positioning.  When an element is dragged onto the editor canvas, it will float to the top, underneath the lower-most already existing element (similar to the Weebly editor).  The editor should not allow absolute positioning by X,Y coordinates
+###### Users can drag a "Text" element onto the editor canvas. Clicking on an element allows the user to edit the content of the text element
+###### Users can drag an "Image" element onto the editor canvas. There are no events for image elements at this stage.
+
 Front-end Level Five: Columns, Routing, and Persistence
 ------
 ###### Design implementation should be (close to) 100% complete
