@@ -15,11 +15,11 @@ Must have Sass, npm, Bower, Grunt and Mongo installed
 
 Front-end Level One: Project Setup & Structure
 ------
-#h3 (DONE) Set up the basic DOM structure to match the mockups provided
-#h3 (DONE) Set up your Javascript and CSS
-#h3 (DONE Optional) Use a dependency management tool for your Javascript (RequireJS, Browserify, etc.)
+###### (DONE) Set up the basic DOM structure to match the mockups provided
+###### (DONE) Set up your Javascript and CSS
+###### (DONE Optional) Use a dependency management tool for your Javascript (RequireJS, Browserify, etc.)
 I used Common.js on the server-side and Angular on the client-side to divide my application into modules.
-#h3 (DONE Optional) Use a CSS pre-processor for your CSS (LESS, SASS)
+###### (DONE Optional) Use a CSS pre-processor for your CSS (LESS, SASS)
 I used SCSS to organize my client-side CSS.
 
 
