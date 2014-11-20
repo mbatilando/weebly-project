@@ -13,7 +13,9 @@ function authenticate (req, res, callback) {
   } else {
     User.validateApiKey(req.cookies.user, req.cookies.api_key, function (result) {
       result.authenticated ? callback(true) : callback(false);
-      cache.put(result.user.name, result.user.api_key);
+      if (result.user !== null) {
+        cache.put(result.user.name, result.user.api_key);
+      }
     });
   }
 }
@@ -25,10 +27,10 @@ exports.index = function(req, res) {
 
     var pages = cache.get('pages');
     if (pages) {
-      console.log('GET /:CACHE HIT');
+      // console.log('GET /:CACHE HIT');
       return res.json(200, pages);
     } else {
-      console.log('GET /:CACHE MISS');
+      // console.log('GET /:CACHE MISS');
       Page.find(function (err, pages) {
         if(err) { return handleError(res, err); }
         cache.put('pages', pages);
@@ -45,10 +47,10 @@ exports.show = function(req, res) {
 
     var page = cache.get(req.params.id);
     if (page) {
-      console.log('GET /id:CACHE HIT');
+      // console.log('GET /id:CACHE HIT');
       return res.json(200, page);
     } else {
-      console.log('GET /id:CACHE MISS');
+      // console.log('GET /id:CACHE MISS');
       Page.findById(req.params.id, function (err, page) {
         if(err) { return handleError(res, err); }
         if(!page) { return res.send(404); }
@@ -66,7 +68,7 @@ exports.create = function(req, res) {
 
     Page.create(req.body, function(err, page) {
       if(err) { return handleError(res, err); }
-      console.log('POST: CACHING');
+      // console.log('POST: CACHING');
       cache.put(page._id, page);
       cache.del('pages');
       return res.json(201, page);
@@ -85,9 +87,9 @@ exports.update = function(req, res) {
         var updated = _.merge(page, req.body);
         updated.save(function (err) {
           if (err) { return handleError(res, err); }
-          console.log('PUT: CACHING');
+          // console.log('PUT: CACHING');
           cache.put(page._id, page);
-          console.log('PUT: DELETING ALL PAGES CACHE')
+          // console.log('PUT: DELETING ALL PAGES CACHE')
           cache.del('pages');
           return res.json(200, page);
         });
